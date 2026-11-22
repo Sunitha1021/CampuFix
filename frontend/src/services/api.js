@@ -1,0 +1,44 @@
+
+const API_URL = "http://127.0.0.1:8000";
+
+export async function apiRequest(endpoint, options = {}) {
+  const token = localStorage.getItem("campusfix_token");
+
+  const headers = {
+    "Content-Type": "application/json",
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...options.headers,
+  };
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    headers,
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.detail || "Something went wrong");
+  }
+
+  return data;
+}
+export async function apiUpload(endpoint, formData) {
+  const token = localStorage.getItem("campusfix_token");
+
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    method: "POST",
+    headers: {
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: formData,
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.detail || "Image upload failed");
+  }
+
+  return data;
+}

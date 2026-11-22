@@ -1,0 +1,692 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
+/* ==========================================================
+   CampusFix – Report Issue (student, light theme)
+   Every selector starts with .student-report- so it cannot
+   clash with the other pages or with App.css / index.css.
+   ========================================================== */
+
+.student-report-shell {
+  --sr-bg: #f8f9ff;
+  --sr-card: #ffffff;
+  --sr-soft: #eff4ff;
+  --sr-soft-2: #e5eeff;
+  --sr-soft-3: #dce9ff;
+  --sr-text: #0b1c30;
+  --sr-muted: #565e74;
+  --sr-outline: #737686;
+  --sr-border: #d5dcec;
+  --sr-primary: #004ac6;
+  --sr-primary-strong: #2563eb;
+  --sr-error: #ba1a1a;
+  --sr-shadow: 0 1px 8px rgba(11, 28, 48, 0.06);
+
+  display: flex;
+  min-height: 100vh;
+  background: var(--sr-bg);
+  color: var(--sr-text);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.student-report-shell *,
+.student-report-shell *::before,
+.student-report-shell *::after { box-sizing: border-box; }
+
+.student-report-shell h1,
+.student-report-shell h2,
+.student-report-shell h3,
+.student-report-shell p,
+.student-report-shell ul,
+.student-report-shell ol,
+.student-report-shell fieldset,
+.student-report-shell legend { margin: 0; padding: 0; }
+
+.student-report-shell a { color: inherit; text-decoration: none; }
+.student-report-shell button { font: inherit; cursor: pointer; }
+.student-report-shell button:disabled { cursor: not-allowed; }
+
+.student-report-shell :focus-visible {
+  outline: 2px solid var(--sr-primary-strong);
+  outline-offset: 2px;
+}
+
+.student-report-icon {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+.student-report-icon-sm { font-size: 14px; }
+.student-report-icon-md { font-size: 18px; }
+.student-report-icon-lg { font-size: 26px; }
+.student-report-icon.is-spinning { animation: student-report-spin 1s linear infinite; }
+
+@keyframes student-report-spin { to { transform: rotate(360deg); } }
+
+/* Visually hidden but focusable (radios and the file input).
+   The extra specificity beats the global input rules in App.css. */
+.student-report-shell .student-report-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  opacity: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ---------- Sidebar ---------- */
+
+.student-report-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 256px;
+  background: var(--sr-card);
+  box-shadow: var(--sr-shadow);
+}
+
+.student-report-brand { display: flex; align-items: center; gap: 10px; height: 64px; padding: 0 24px; }
+
+.student-report-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--sr-primary-strong);
+  background: var(--sr-soft);
+}
+
+.student-report-brand-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.student-report-brand-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #3f465c;
+  background: #dae2fd;
+}
+
+.student-report-nav { display: flex; flex-direction: column; gap: 4px; margin-top: 16px; padding: 0 16px; }
+
+.student-report-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #434655;
+  transition: background 0.2s, color 0.2s;
+}
+
+.student-report-nav-link:hover { color: var(--sr-text); background: var(--sr-soft); }
+.student-report-nav-link.is-active { font-weight: 700; color: var(--sr-primary-strong); background: var(--sr-soft); }
+
+.student-report-sidebar-bottom { margin: 0 16px 16px; padding-top: 12px; border-top: 1px solid var(--sr-soft-2); }
+
+.student-report-logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--sr-muted);
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+
+.student-report-logout:hover { color: var(--sr-error); background: var(--sr-soft); }
+
+/* ---------- Main / header ---------- */
+
+.student-report-main { flex: 1; min-width: 0; margin-left: 256px; }
+
+.student-report-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.student-report-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+
+.student-report-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--sr-muted);
+}
+
+.student-report-crumbs .is-primary { font-weight: 700; color: var(--sr-primary); }
+
+.student-report-header h1 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+.student-report-subtitle { margin-top: 6px; max-width: 640px; color: var(--sr-muted); font-size: 15px; }
+
+.student-report-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--sr-primary);
+  background: var(--sr-card);
+  box-shadow: var(--sr-shadow);
+  transition: background 0.2s;
+}
+
+.student-report-back:hover { background: var(--sr-soft); }
+
+.student-report-card { border-radius: 14px; background: var(--sr-card); box-shadow: var(--sr-shadow); }
+
+/* ---------- Layout ---------- */
+
+.student-report-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.student-report-form-card { padding: 32px; }
+
+.student-report-card-head { padding-bottom: 20px; }
+.student-report-card-head h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; }
+.student-report-card-head p { margin-top: 4px; color: var(--sr-muted); }
+
+.student-report-form { display: flex; flex-direction: column; gap: 24px; }
+
+.student-report-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; border: 0; }
+
+.student-report-field > label,
+.student-report-field > legend,
+.student-report-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sr-text);
+}
+
+.student-report-field > label small { font-size: 12px; font-weight: 400; color: var(--sr-muted); }
+.student-report-required { color: var(--sr-error); }
+
+/* Inputs (override the global dark input styles from App.css) */
+.student-report-shell .student-report-input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid var(--sr-border);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--sr-text);
+  background: var(--sr-card);
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.student-report-shell .student-report-input::placeholder { color: var(--sr-outline); }
+
+.student-report-shell .student-report-input:focus {
+  outline: none;
+  border-color: var(--sr-primary-strong);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.student-report-shell .student-report-input:disabled { opacity: 0.6; background: var(--sr-soft); }
+
+.student-report-shell .student-report-textarea { min-height: 140px; resize: vertical; line-height: 1.55; }
+
+/* Category tiles */
+.student-report-categories legend { width: 100%; margin-bottom: 8px; }
+
+.student-report-category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.student-report-category {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 6px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--sr-muted);
+  background: var(--sr-soft);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.student-report-category:hover { color: var(--sr-text); background: var(--sr-soft-2); }
+
+.student-report-category.is-selected {
+  color: #00174b;
+  background: #dbe1ff;
+  border-color: var(--sr-primary-strong);
+}
+
+.student-report-category:has(.student-report-sr:focus-visible) {
+  outline: 2px solid var(--sr-primary-strong);
+  outline-offset: 2px;
+}
+
+.student-report-categories:disabled .student-report-category { opacity: 0.6; cursor: not-allowed; }
+
+/* Image upload */
+.student-report-badge {
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sr-muted);
+  background: var(--sr-soft-2);
+  white-space: nowrap;
+}
+
+.student-report-drop {
+  position: relative;
+  border: 2px dashed #b7c4e4;
+  border-radius: 14px;
+  background: rgba(239, 244, 255, 0.6);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.student-report-drop:hover,
+.student-report-drop.is-active {
+  border-color: var(--sr-primary-strong);
+  background: var(--sr-soft);
+}
+
+.student-report-drop:has(.student-report-sr:focus-visible) {
+  outline: 2px solid var(--sr-primary-strong);
+  outline-offset: 2px;
+}
+
+.student-report-drop.is-disabled { opacity: 0.6; }
+.student-report-drop.is-disabled .student-report-drop-body { cursor: not-allowed; }
+
+.student-report-drop-body {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 28px 20px !important;
+  text-align: center;
+  cursor: pointer;
+}
+
+.student-report-drop-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  color: var(--sr-primary-strong);
+  background: var(--sr-card);
+  box-shadow: var(--sr-shadow);
+  transition: transform 0.2s;
+}
+
+.student-report-drop:hover .student-report-drop-icon,
+.student-report-drop.is-active .student-report-drop-icon { transform: scale(1.06); }
+
+.student-report-drop-title { font-weight: 500; color: var(--sr-muted); }
+.student-report-drop-title strong { font-weight: 700; color: var(--sr-primary); }
+.student-report-drop-hint { max-width: 420px; font-size: 13px; font-weight: 400; color: var(--sr-muted); }
+
+.student-report-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--sr-soft);
+}
+
+.student-report-preview-title { font-size: 13px; font-weight: 600; }
+
+.student-report-preview img {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: var(--sr-card);
+}
+
+.student-report-preview-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.student-report-file-info { min-width: 0; }
+.student-report-file-info strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+
+.student-report-file-info small {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--sr-muted);
+}
+
+.student-report-ok { display: inline-flex; align-items: center; gap: 3px; font-weight: 600; color: #006242; }
+
+.student-report-remove {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--sr-muted);
+  background: var(--sr-card);
+  transition: color 0.2s, background 0.2s;
+}
+
+.student-report-remove:hover:not(:disabled) { color: var(--sr-error); background: #ffdad6; }
+.student-report-remove:disabled { opacity: 0.6; }
+
+/* Error + actions */
+.student-report-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #93000a;
+  background: #ffdad6;
+}
+
+.student-report-actions { display: flex; justify-content: flex-end; }
+
+.student-report-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--sr-primary-strong);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+  transition: background 0.15s, transform 0.15s;
+}
+
+.student-report-submit:hover:not(:disabled) { background: var(--sr-primary); transform: translateY(-1px); }
+.student-report-submit:disabled { opacity: 0.7; transform: none; }
+
+.student-report-secondary {
+  padding: 11px 22px;
+  border: 1px solid var(--sr-border);
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--sr-text);
+  background: var(--sr-card);
+  transition: background 0.2s;
+}
+
+.student-report-secondary:hover:not(:disabled) { background: var(--sr-soft); }
+.student-report-secondary:disabled { opacity: 0.6; }
+
+/* Duplicate warning */
+.student-report-duplicate {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid #f2c460;
+  border-left: 5px solid #e59e0b;
+  border-radius: 14px;
+  background: #fffbeb;
+}
+
+.student-report-duplicate-head { display: flex; align-items: flex-start; gap: 12px; }
+
+.student-report-duplicate-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #92400e;
+  background: #fde68a;
+}
+
+.student-report-duplicate h3 { font-size: 16px; font-weight: 700; color: #78350f; }
+.student-report-duplicate-head p { margin-top: 2px; color: #92400e; }
+
+.student-report-matches { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+
+.student-report-match {
+  padding: 12px 14px;
+  border: 1px solid #f5dc9b;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.student-report-match-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.student-report-match-top strong { overflow-wrap: anywhere; }
+
+.student-report-similarity {
+  flex-shrink: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #92400e;
+  background: #fde68a;
+  white-space: nowrap;
+}
+
+.student-report-match-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; font-size: 13px; color: var(--sr-muted); }
+
+.student-report-duplicate-note { color: #78350f; }
+
+.student-report-duplicate-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- Info column ---------- */
+
+.student-report-side { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+.student-report-info { padding: 24px; }
+.student-report-info h3 { margin: 12px 0 16px; font-size: 20px; font-weight: 600; letter-spacing: -0.005em; }
+
+.student-report-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #00174b;
+  background: #dbe1ff;
+}
+
+.student-report-steps { display: flex; flex-direction: column; gap: 16px; list-style: none; }
+.student-report-steps li { display: flex; align-items: flex-start; gap: 12px; }
+
+.student-report-step-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  color: var(--sr-primary-strong);
+  background: var(--sr-soft);
+}
+
+.student-report-steps strong { display: block; font-size: 14px; font-weight: 600; }
+.student-report-steps p { margin-top: 2px; font-size: 13px; color: var(--sr-muted); }
+.student-report-steps a { font-weight: 700; color: var(--sr-primary); }
+.student-report-steps a:hover { text-decoration: underline; }
+
+.student-report-tips { padding: 20px 24px; }
+
+.student-report-tips h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sr-primary);
+}
+
+.student-report-tips ul { display: flex; flex-direction: column; gap: 6px; padding-left: 18px; color: var(--sr-muted); font-size: 13px; }
+
+.student-report-emergency {
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: rgba(255, 218, 214, 0.35);
+}
+
+.student-report-emergency h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--sr-error);
+}
+
+.student-report-emergency p { font-size: 13px; color: #434655; }
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+  .student-report-sidebar { width: 72px; }
+  .student-report-main { margin-left: 72px; }
+
+  .student-report-brand { justify-content: center; padding: 0; }
+  .student-report-brand-name,
+  .student-report-nav-text { display: none; }
+
+  .student-report-nav { padding: 0 10px; }
+  .student-report-nav-link,
+  .student-report-logout { justify-content: center; padding: 11px; }
+  .student-report-sidebar-bottom { margin: 0 10px 16px; }
+
+  .student-report-content { padding: 24px; }
+  .student-report-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+  .student-report-shell { flex-direction: column; }
+
+  .student-report-sidebar {
+    position: sticky;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 6px 10px;
+  }
+
+  .student-report-sidebar-top { display: flex; align-items: center; gap: 6px; }
+  .student-report-brand { height: auto; }
+  .student-report-nav { flex-direction: row; margin: 0; padding: 0; }
+  .student-report-nav-link,
+  .student-report-logout { padding: 9px; }
+  .student-report-sidebar-bottom { margin: 0; padding: 0; border: 0; }
+  .student-report-logout { width: auto; }
+
+  .student-report-main { margin-left: 0; }
+  .student-report-content { padding: 16px; gap: 18px; }
+
+  .student-report-header { flex-direction: column; align-items: flex-start; }
+  .student-report-header h1 { font-size: 26px; }
+  .student-report-subtitle { font-size: 14px; }
+
+  .student-report-form-card { padding: 20px 16px; }
+  .student-report-card-head h2 { font-size: 20px; }
+  .student-report-form { gap: 20px; }
+
+  /* 16px font stops iOS Safari zooming into inputs */
+  .student-report-shell .student-report-input { font-size: 16px; padding: 12px 14px; }
+
+  .student-report-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .student-report-category { flex-direction: row; justify-content: flex-start; gap: 8px; padding: 14px 12px; font-size: 13px; }
+  .student-report-category:last-child { grid-column: 1 / -1; }
+
+  .student-report-label-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .student-report-drop-body { padding: 22px 14px !important; }
+
+  .student-report-preview-row { flex-direction: column; align-items: stretch; }
+  .student-report-remove { justify-content: center; }
+
+  .student-report-actions { justify-content: stretch; }
+  .student-report-submit { width: 100%; padding: 14px 20px; }
+
+  .student-report-duplicate { padding: 16px; }
+  .student-report-duplicate-actions { flex-direction: column; }
+  .student-report-duplicate-actions button { width: 100%; }
+  .student-report-match-top { flex-direction: column; }
+}
