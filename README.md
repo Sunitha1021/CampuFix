@@ -126,6 +126,26 @@ Frontend: http://localhost:5173
 
 **Sunitha S**
 
+## Application Screenshots
+
+### Student Dashboard
+![Student Dashboard](screenshots/student-dashboard.png)
+
+### Report Issue
+![Report Issue](screenshots/report-issue.png)
+
+### My Issues
+![My Issues](screenshots/my-issues.png)
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### Login
+![Login](screenshots/login.png)
+
+### Register
+![Register](screenshots/register.png)
+
 GitHub: [Sunitha1021](https://github.com/Sunitha1021)
 
 ---
